@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/drug-schema.json",
+  "title": "Drug",
+  "description": "A pharmaceutical product / drug record harmonizing identifiers and attributes from openFDA, RxNorm, DailyMed, and DrugBank.",
+  "type": "object",
+  "properties": {
+    "rxcui": {
+      "type": "string",
+      "description": "RxNorm Concept Unique Identifier (RxCUI) — the canonical NLM identifier for a clinical drug concept.",
+      "pattern": "^[0-9]+$",
+      "example": "1191"
+    },
+    "name": {
+      "type": "string",
+      "description": "Common or generic name of the drug.",
+      "example": "Aspirin"
+    },
+    "brandNames": {
+      "type": "array",
+      "description": "Branded names under which the drug is marketed.",
+      "items": { "type": "string" },
+      "example": ["Bayer", "Bufferin"]
+    },
+    "ingredients": {
+      "type": "array",
+      "description": "Active ingredients with their strength.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "strength": { "type": "string", "example": "81 mg" },
+          "unii": {
+            "type": "string",
+            "description": "FDA Unique Ingredient Identifier (UNII).",
+            "example": "R16CO5Y76E"
+          }
+        },
+        "required": ["name"]
+      }
+    },
+    "dosageForm": {
+      "type": "string",
+      "description": "Dosage form (Tablet, Capsule, Solution, Injection, etc.).",
+      "example": "Tablet"
+    },
+    "routeOfAdministration": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["Oral"]
+    },
+    "ndc": {
+      "type": "array",
+      "description": "National Drug Code identifiers assigned by the FDA, in any of 4-4-2, 5-3-2, 5-4-1, or 5-4-2 segment formats.",
+      "items": {
+        "type": "string",
+        "example": "0573-0142-40"
+      }
+    },
+    "atcCodes": {
+      "type": "array",
+      "description": "WHO Anatomical Therapeutic Chemical classification codes.",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-V][0-9]{2}([A-Z]([A-Z]([0-9]{2})?)?)?$",
+        "example": "B01AC06"
+      }
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Manufacturer or labeller name as registered with the FDA."
+    },
+    "fdaApprovalDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of first FDA approval for the drug product."
+    },
+    "marketingStatus": {
+      "type": "string",
+      "enum": [
+        "Prescription",
+        "Over-the-counter",
+        "Discontinued",
+        "Withdrawn",
+        "Unapproved",
+        "Investigational"
+      ]
+    },
+    "indications": {
+      "type": "array",
+      "description": "Therapeutic indications and approved usage statements.",
+      "items": { "type": "string" }
+    },
+    "interactions": {
+      "type": "array",
+      "description": "Known drug-drug or drug-substance interactions.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "interactingDrug": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["High", "Moderate", "Low", "Unknown"]
+          },
+          "description": { "type": "string" }
+        },
+        "required": ["interactingDrug"]
+      }
+    },
+    "blackBoxWarning": {
+      "type": "boolean",
+      "description": "Whether the FDA has applied a boxed warning to this product."
+    },
+    "drugbankId": {
+      "type": "string",
+      "description": "DrugBank accession (DB followed by 5 digits).",
+      "pattern": "^DB[0-9]{5}$",
+      "example": "DB00945"
+    },
+    "splSetId": {
+      "type": "string",
+      "description": "Structured Product Labeling SET ID assigned by DailyMed.",
+      "format": "uuid"
+    },
+    "labelUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URL to the SPL prescribing-information document."
+    }
+  },
+  "required": ["rxcui", "name"]
+}

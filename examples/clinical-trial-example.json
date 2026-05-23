@@ -1,0 +1,54 @@
+{
+  "nctId": "NCT04280705",
+  "officialTitle": "Adaptive COVID-19 Treatment Trial (ACTT)",
+  "briefTitle": "Adaptive COVID-19 Treatment Trial",
+  "status": "Completed",
+  "phase": ["Phase 3"],
+  "studyType": "Interventional",
+  "conditions": ["COVID-19", "SARS-CoV-2 Infection"],
+  "interventions": [
+    {
+      "type": "Drug",
+      "name": "Remdesivir",
+      "description": "200 mg loading dose on day 1, followed by 100 mg daily for up to 9 additional days"
+    },
+    {
+      "type": "Drug",
+      "name": "Placebo",
+      "description": "Matching placebo administered on the same schedule"
+    }
+  ],
+  "sponsor": {
+    "name": "National Institute of Allergy and Infectious Diseases (NIAID)",
+    "class": "NIH"
+  },
+  "locations": [
+    {
+      "facility": "University of Nebraska Medical Center",
+      "city": "Omaha",
+      "state": "Nebraska",
+      "country": "United States",
+      "status": "Completed"
+    }
+  ],
+  "enrollment": {
+    "count": 1062,
+    "type": "Actual"
+  },
+  "startDate": "2020-02-21",
+  "completionDate": "2020-04-19",
+  "primaryOutcomes": [
+    {
+      "measure": "Time to recovery",
+      "timeFrame": "Day 1 through Day 29",
+      "description": "Days until participant met the recovery criterion of being well enough for hospital discharge"
+    }
+  ],
+  "eligibility": {
+    "criteria": "Hospitalized adults with laboratory-confirmed SARS-CoV-2 infection and evidence of lower respiratory tract involvement",
+    "sex": "All",
+    "minimumAge": "18 Years",
+    "healthyVolunteers": false
+  },
+  "url": "https://clinicaltrials.gov/study/NCT04280705"
+}

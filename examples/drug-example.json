@@ -1,0 +1,40 @@
+{
+  "rxcui": "1191",
+  "name": "Aspirin",
+  "brandNames": ["Bayer", "Bufferin", "Ecotrin"],
+  "ingredients": [
+    {
+      "name": "Acetylsalicylic acid",
+      "strength": "325 mg",
+      "unii": "R16CO5Y76E"
+    }
+  ],
+  "dosageForm": "Tablet",
+  "routeOfAdministration": ["Oral"],
+  "ndc": ["0280-2000-30", "0573-0142-40"],
+  "atcCodes": ["B01AC06", "N02BA01"],
+  "manufacturer": "Bayer HealthCare LLC",
+  "fdaApprovalDate": "1939-01-01",
+  "marketingStatus": "Over-the-counter",
+  "indications": [
+    "Mild to moderate pain",
+    "Reduction of fever",
+    "Secondary prevention of cardiovascular events"
+  ],
+  "interactions": [
+    {
+      "interactingDrug": "Warfarin",
+      "severity": "High",
+      "description": "Concurrent use increases the risk of bleeding due to additive antiplatelet and anticoagulant effects."
+    },
+    {
+      "interactingDrug": "Ibuprofen",
+      "severity": "Moderate",
+      "description": "Ibuprofen may attenuate the antiplatelet effect of low-dose aspirin."
+    }
+  ],
+  "blackBoxWarning": false,
+  "drugbankId": "DB00945",
+  "splSetId": "8d24bacb-feff-4c6a-b8df-625e1435387a",
+  "labelUrl": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=8d24bacb-feff-4c6a-b8df-625e1435387a"
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/gene-schema.json",
+  "title": "Gene",
+  "description": "A gene record harmonizing identifiers and annotations from NCBI Gene (Entrez), Ensembl, HGNC, and UCSC genome assemblies.",
+  "type": "object",
+  "properties": {
+    "hgncSymbol": {
+      "type": "string",
+      "description": "HUGO Gene Nomenclature Committee approved symbol — the canonical human gene symbol.",
+      "example": "BRCA1"
+    },
+    "hgncId": {
+      "type": "string",
+      "description": "HGNC identifier in the form HGNC:NNNN.",
+      "pattern": "^HGNC:[0-9]+$",
+      "example": "HGNC:1100"
+    },
+    "ensemblId": {
+      "type": "string",
+      "description": "Ensembl stable gene identifier.",
+      "pattern": "^ENS[A-Z]*G[0-9]{11}(\\.[0-9]+)?$",
+      "example": "ENSG00000012048"
+    },
+    "ncbiGeneId": {
+      "type": "string",
+      "description": "NCBI Entrez Gene identifier.",
+      "pattern": "^[0-9]+$",
+      "example": "672"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full gene name.",
+      "example": "BRCA1 DNA repair associated"
+    },
+    "aliases": {
+      "type": "array",
+      "description": "Alternate gene symbols and previous names.",
+      "items": { "type": "string" },
+      "example": ["RNF53", "BRCC1", "PPP1R53"]
+    },
+    "organism": {
+      "type": "object",
+      "properties": {
+        "scientificName": { "type": "string", "example": "Homo sapiens" },
+        "taxonomyId": { "type": "integer", "example": 9606 }
+      },
+      "required": ["taxonomyId"]
+    },
+    "chromosome": {
+      "type": "string",
+      "description": "Chromosome where the gene is located.",
+      "example": "17"
+    },
+    "location": {
+      "type": "object",
+      "description": "Genomic coordinates on the specified assembly.",
+      "properties": {
+        "assembly": {
+          "type": "string",
+          "enum": ["GRCh37", "GRCh38", "T2T-CHM13v2.0", "GRCm39", "GRCm38"],
+          "example": "GRCh38"
+        },
+        "chromosome": { "type": "string", "example": "17" },
+        "start": { "type": "integer", "example": 43044295 },
+        "end": { "type": "integer", "example": 43125483 },
+        "strand": { "type": "string", "enum": ["+", "-"] }
+      },
+      "required": ["assembly", "start", "end"]
+    },
+    "biotype": {
+      "type": "string",
+      "description": "Gene biotype as defined by Ensembl/GENCODE.",
+      "enum": [
+        "protein_coding",
+        "lncRNA",
+        "miRNA",
+        "snoRNA",
+        "snRNA",
+        "rRNA",
+        "tRNA",
+        "pseudogene",
+        "processed_pseudogene",
+        "IG_gene",
+        "TR_gene",
+        "misc_RNA",
+        "other"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief functional description of the gene."
+    },
+    "transcripts": {
+      "type": "array",
+      "description": "Annotated transcripts for the gene.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "ENST00000357654" },
+          "biotype": { "type": "string" },
+          "isCanonical": { "type": "boolean" }
+        }
+      }
+    },
+    "phenotypes": {
+      "type": "array",
+      "description": "Associated diseases and phenotypes (e.g. from ClinVar, OMIM, MONDO).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "source": { "type": "string", "example": "OMIM" },
+          "identifier": { "type": "string", "example": "OMIM:604370" }
+        },
+        "required": ["name"]
+      }
+    },
+    "crossReferences": {
+      "type": "object",
+      "description": "Cross-database identifiers.",
+      "properties": {
+        "uniprot": {
+          "type": "array",
+          "items": { "type": "string", "example": "P38398" }
+        },
+        "omim": { "type": "string", "example": "113705" },
+        "refseq": {
+          "type": "array",
+          "items": { "type": "string", "example": "NM_007294" }
+        }
+      }
+    }
+  },
+  "required": ["ensemblId", "hgncSymbol", "organism"]
+}

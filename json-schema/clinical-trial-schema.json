@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/clinical-trial-schema.json",
+  "title": "ClinicalTrial",
+  "description": "A registered clinical trial study record, modeled on the harmonized fields used by ClinicalTrials.gov v2 and the EU Clinical Trials Information System (CTIS).",
+  "type": "object",
+  "properties": {
+    "nctId": {
+      "type": "string",
+      "description": "ClinicalTrials.gov identifier in the form NCT followed by 8 digits.",
+      "pattern": "^NCT[0-9]{8}$",
+      "example": "NCT04280705"
+    },
+    "euctNumber": {
+      "type": "string",
+      "description": "EU Clinical Trial Number issued by CTIS, format YYYY-NNNNNN-NN-CC.",
+      "pattern": "^[0-9]{4}-[0-9]{6}-[0-9]{2}-[0-9]{2}$"
+    },
+    "officialTitle": {
+      "type": "string",
+      "description": "The full official scientific title of the study as registered."
+    },
+    "briefTitle": {
+      "type": "string",
+      "description": "Short public-facing title for the study."
+    },
+    "status": {
+      "type": "string",
+      "description": "Overall recruitment / lifecycle status.",
+      "enum": [
+        "Not yet recruiting",
+        "Recruiting",
+        "Enrolling by invitation",
+        "Active, not recruiting",
+        "Completed",
+        "Suspended",
+        "Terminated",
+        "Withdrawn",
+        "Unknown status"
+      ]
+    },
+    "phase": {
+      "type": "array",
+      "description": "Clinical trial phase(s).",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Early Phase 1",
+          "Phase 1",
+          "Phase 1/Phase 2",
+          "Phase 2",
+          "Phase 2/Phase 3",
+          "Phase 3",
+          "Phase 4",
+          "Not Applicable"
+        ]
+      }
+    },
+    "studyType": {
+      "type": "string",
+      "enum": ["Interventional", "Observational", "Expanded Access"],
+      "description": "Primary study design type."
+    },
+    "conditions": {
+      "type": "array",
+      "description": "Conditions or diseases being studied (preferred terms; MeSH or MedDRA where available).",
+      "items": { "type": "string" },
+      "example": ["COVID-19", "Type 2 Diabetes Mellitus"]
+    },
+    "interventions": {
+      "type": "array",
+      "description": "Interventions tested by the study.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Drug",
+              "Biological",
+              "Device",
+              "Procedure",
+              "Behavioral",
+              "Radiation",
+              "Genetic",
+              "Dietary Supplement",
+              "Combination Product",
+              "Diagnostic Test",
+              "Other"
+            ]
+          },
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["type", "name"]
+      }
+    },
+    "sponsor": {
+      "type": "object",
+      "description": "Lead organisation responsible for the trial.",
+      "properties": {
+        "name": { "type": "string" },
+        "class": {
+          "type": "string",
+          "enum": ["NIH", "Industry", "Academic", "U.S. Fed", "Other Gov", "Network", "Other"]
+        }
+      },
+      "required": ["name"]
+    },
+    "locations": {
+      "type": "array",
+      "description": "Investigative sites participating in the trial.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "facility": { "type": "string" },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "country": { "type": "string" },
+          "status": { "type": "string" }
+        }
+      }
+    },
+    "enrollment": {
+      "type": "object",
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 },
+        "type": { "type": "string", "enum": ["Actual", "Anticipated", "Estimated"] }
+      }
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the first participant was or will be enrolled."
+    },
+    "completionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Final date of data collection for the primary outcome measure."
+    },
+    "primaryOutcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "measure": { "type": "string" },
+          "timeFrame": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["measure"]
+      }
+    },
+    "eligibility": {
+      "type": "object",
+      "properties": {
+        "criteria": { "type": "string", "description": "Free-text inclusion/exclusion criteria." },
+        "sex": { "type": "string", "enum": ["All", "Male", "Female"] },
+        "minimumAge": { "type": "string", "example": "18 Years" },
+        "maximumAge": { "type": "string", "example": "75 Years" },
+        "healthyVolunteers": { "type": "boolean" }
+      }
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical registry URL for the trial."
+    }
+  },
+  "required": ["nctId", "officialTitle", "status", "studyType"]
+}

@@ -1,0 +1,404 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Life Sciences
+  description: >-
+    Vocabulary taxonomy for the life sciences API landscape — clinical trials,
+    drug and regulatory data, genomics and bioinformatics reference data,
+    electronic health record exchange (FHIR), laboratory informatics, and
+    cloud bioinformatics platforms. Captures the cross-provider concepts that
+    recur across the field's principal APIs.
+  created: "2026-05-23"
+  modified: "2026-05-23"
+
+operational:
+  apis:
+    - name: ClinicalTrials.gov API v2
+      namespace: ctgov
+      version: "2"
+      baseUrl: https://clinicaltrials.gov/api/v2/
+      status: active
+    - name: EU CTIS
+      namespace: ctis
+      version: "2024"
+      baseUrl: https://euclinicaltrials.eu/ctis-public/
+      status: active
+    - name: openFDA
+      namespace: openfda
+      version: "alpha"
+      baseUrl: https://api.fda.gov/
+      status: active
+    - name: DailyMed
+      namespace: dailymed
+      version: "2"
+      baseUrl: https://dailymed.nlm.nih.gov/dailymed/services/v2/
+      status: active
+    - name: RxNorm
+      namespace: rxnorm
+      version: "current"
+      baseUrl: https://rxnav.nlm.nih.gov/REST/
+      status: active
+    - name: DrugBank
+      namespace: drugbank
+      version: "1"
+      baseUrl: https://api.drugbankplus.com/v1/
+      status: active
+    - name: NCBI E-utilities
+      namespace: entrez
+      version: "current"
+      baseUrl: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/
+      status: active
+    - name: Ensembl REST
+      namespace: ensembl
+      version: "current"
+      baseUrl: https://rest.ensembl.org/
+      status: active
+    - name: UCSC Genome Browser REST
+      namespace: ucsc
+      version: "current"
+      baseUrl: https://api.genome.ucsc.edu/
+      status: active
+    - name: HL7 FHIR R5
+      namespace: fhir
+      version: "5.0.0"
+      baseUrl: https://hl7.org/fhir/R5/
+      status: active
+    - name: SMART on FHIR
+      namespace: smart
+      version: "2.0"
+      baseUrl: https://docs.smarthealthit.org/
+      status: active
+    - name: Benchling Developer Platform
+      namespace: benchling
+      version: "2"
+      baseUrl: https://{tenant}.benchling.com/api/v2/
+      status: active
+    - name: TetraScience
+      namespace: tetra
+      version: "current"
+      baseUrl: https://developers.tetrascience.com/
+      status: active
+    - name: DNAnexus
+      namespace: dnanexus
+      version: "current"
+      baseUrl: https://api.dnanexus.com/
+      status: active
+    - name: Seven Bridges
+      namespace: sbg
+      version: "2"
+      baseUrl: https://api.sbgenomics.com/v2/
+      status: active
+    - name: Galaxy
+      namespace: galaxy
+      version: "current"
+      baseUrl: https://usegalaxy.org/api/
+      status: active
+    - name: GA4GH (htsget / DRS / WES / TES / Beacon)
+      namespace: ga4gh
+      version: "current"
+      baseUrl: https://www.ga4gh.org/
+      status: active
+
+  resources:
+    - name: Clinical Trial
+      description: Registered clinical study at a public registry such as ClinicalTrials.gov or CTIS
+      api: ctgov
+      actions: [search, read, list]
+    - name: Trial Site
+      description: Investigative site participating in a clinical trial
+      api: ctgov
+      actions: [list, read]
+    - name: Drug
+      description: A pharmaceutical product identified by RxCUI / NDC / DrugBank / UNII
+      api: rxnorm
+      actions: [search, lookup, normalize]
+    - name: Drug Label
+      description: FDA Structured Product Labeling (SPL) document
+      api: dailymed
+      actions: [search, read]
+    - name: Adverse Event Report
+      description: A reported adverse event from FAERS, MAUDE, or CAERS
+      api: openfda
+      actions: [search, aggregate]
+    - name: Drug Interaction
+      description: A drug-drug or drug-substance interaction
+      api: rxnorm
+      actions: [check, list]
+    - name: Gene
+      description: A gene record from NCBI / Ensembl / HGNC
+      api: ensembl
+      actions: [lookup, search]
+    - name: Variant
+      description: A genomic variant from ClinVar, dbSNP, or Ensembl Variation
+      api: ensembl
+      actions: [lookup, annotate]
+    - name: Sequence
+      description: A genomic, transcript, or protein sequence
+      api: ensembl
+      actions: [retrieve, region]
+    - name: FHIR Resource
+      description: An HL7 FHIR resource (Patient, Observation, MedicationRequest, etc.)
+      api: fhir
+      actions: [read, search, create, update, delete]
+    - name: Lab Sample
+      description: A registered biological sample in an ELN/LIMS
+      api: benchling
+      actions: [register, query, transfer]
+    - name: Workflow Run
+      description: A bioinformatics pipeline execution (Galaxy / DNAnexus / WES)
+      api: galaxy
+      actions: [submit, monitor, retrieve]
+
+  actions:
+    - verb: search
+      description: Query a registry or database with filters
+      pattern: read
+    - verb: lookup
+      description: Resolve a stable identifier to its full record
+      pattern: read
+    - verb: normalize
+      description: Map a name or local identifier to a canonical vocabulary (e.g. RxCUI, HGNC)
+      pattern: read
+    - verb: annotate
+      description: Apply functional or clinical annotation (e.g. VEP, ClinVar significance)
+      pattern: read
+    - verb: aggregate
+      description: Group counts across a corpus (e.g. openFDA Elasticsearch aggregations)
+      pattern: read
+    - verb: register
+      description: Create a new entity in a registry (sample, entry, trial)
+      pattern: write
+    - verb: submit
+      description: Start an asynchronous compute job or workflow run
+      pattern: write
+    - verb: retrieve
+      description: Fetch a sequence, file, or workflow output
+      pattern: read
+
+  schemas:
+    core:
+      - ClinicalTrial
+      - Drug
+      - Gene
+    supporting:
+      - Intervention
+      - Condition
+      - Sponsor
+      - Site
+      - Outcome
+      - Ingredient
+      - Interaction
+      - Transcript
+      - Phenotype
+
+  parameters:
+    identifiers:
+      - name: nctId
+        description: ClinicalTrials.gov identifier (NCT followed by 8 digits)
+      - name: euctNumber
+        description: EU Clinical Trial Number (YYYY-NNNNNN-NN-CC)
+      - name: rxcui
+        description: RxNorm Concept Unique Identifier
+      - name: ndc
+        description: National Drug Code
+      - name: unii
+        description: FDA Unique Ingredient Identifier
+      - name: hgncSymbol
+        description: HUGO-approved human gene symbol
+      - name: ensemblId
+        description: Ensembl stable gene identifier
+      - name: ncbiGeneId
+        description: NCBI Entrez Gene identifier
+      - name: drugbankId
+        description: DrugBank accession
+    filters:
+      - name: condition
+        description: Disease or condition filter (MeSH / MedDRA / SNOMED)
+      - name: phase
+        description: Clinical trial phase filter
+      - name: assembly
+        description: Genome assembly (GRCh37, GRCh38, T2T-CHM13v2.0)
+      - name: organism
+        description: NCBI taxonomy identifier
+
+  enums:
+    trialStatus:
+      - Not yet recruiting
+      - Recruiting
+      - Enrolling by invitation
+      - Active, not recruiting
+      - Completed
+      - Suspended
+      - Terminated
+      - Withdrawn
+      - Unknown status
+    trialPhase:
+      - Early Phase 1
+      - Phase 1
+      - Phase 1/Phase 2
+      - Phase 2
+      - Phase 2/Phase 3
+      - Phase 3
+      - Phase 4
+      - Not Applicable
+    marketingStatus:
+      - Prescription
+      - Over-the-counter
+      - Discontinued
+      - Withdrawn
+      - Unapproved
+      - Investigational
+    interventionType:
+      - Drug
+      - Biological
+      - Device
+      - Procedure
+      - Behavioral
+      - Radiation
+      - Genetic
+      - Dietary Supplement
+      - Combination Product
+      - Diagnostic Test
+      - Other
+    geneBiotype:
+      - protein_coding
+      - lncRNA
+      - miRNA
+      - snoRNA
+      - snRNA
+      - rRNA
+      - tRNA
+      - pseudogene
+    assembly:
+      - GRCh37
+      - GRCh38
+      - T2T-CHM13v2.0
+      - GRCm39
+      - GRCm38
+
+  authentication:
+    schemes:
+      - None (public NIH/NLM/FDA endpoints; api_key recommended for higher rate)
+      - API Key (DrugBank, openFDA at scale, Benchling)
+      - OAuth 2.0 (SMART on FHIR, Benchling, DNAnexus, Seven Bridges)
+    notes: >-
+      Most U.S. federal life-sciences APIs (ClinicalTrials.gov v2, openFDA,
+      RxNorm, DailyMed, NCBI E-utilities, UCSC) are public; throughput improves
+      substantially when an API key is supplied. Commercial platforms
+      (Benchling, DrugBank, TetraScience, DNAnexus, Seven Bridges) require
+      tenant-scoped API keys or OAuth 2.0 client credentials.
+
+capability:
+  workflows:
+    - name: Trial Feasibility Assessment
+      description: Identify recruiting trials matching a patient's condition, genotype, geography, and eligibility criteria
+      apis: [ctgov, ctis, fhir]
+      personas: [Trial Coordinator, Oncologist, Patient Advocate]
+    - name: Drug Identifier Normalization
+      description: Map a free-text drug name or local NDC to canonical RxCUI / DrugBank / ATC / UNII identifiers
+      apis: [rxnorm, dailymed, openfda, drugbank]
+      personas: [Pharmacy Informaticist, Clinical Decision Support Engineer]
+    - name: Drug Safety Surveillance
+      description: Pull adverse-event signals for a drug from FAERS and stratify by demographics
+      apis: [openfda, rxnorm, fhir]
+      personas: [Pharmacovigilance Analyst, Regulatory Affairs]
+    - name: Variant Interpretation
+      description: Annotate a list of variants with VEP, ClinVar clinical significance, and gene-disease evidence
+      apis: [ensembl, entrez]
+      personas: [Clinical Geneticist, Bioinformatician]
+    - name: Gene-Disease Lookup
+      description: Resolve a gene symbol to its phenotypes, transcripts, location, and curated drug-target data
+      apis: [ensembl, entrez, drugbank]
+      personas: [Translational Scientist, Bioinformatician]
+    - name: Sample Registration to Sequencing
+      description: Register a sample in an ELN, hand off to a sequencing instrument, ingest output into a bioinformatics pipeline
+      apis: [benchling, tetra, dnanexus, galaxy]
+      personas: [Lab Scientist, Bioinformatics Engineer]
+    - name: EHR App Launch
+      description: Launch a third-party clinical app inside an EHR session using SMART on FHIR with scoped resource access
+      apis: [fhir, smart]
+      personas: [Clinical App Developer, EHR Administrator]
+    - name: Federated Genomic Cohort Discovery
+      description: Discover variant-carrying cohorts across institutions using GA4GH Beacon and DRS
+      apis: [ga4gh, ensembl]
+      personas: [Population Geneticist, Research Consortium Coordinator]
+
+  personas:
+    - id: trial-coordinator
+      name: Trial Coordinator
+      description: Manages site activation, screening, and enrollment for clinical studies
+      workflows: [Trial Feasibility Assessment]
+    - id: clinical-geneticist
+      name: Clinical Geneticist
+      description: Interprets germline and somatic variants for diagnosis and therapy selection
+      workflows: [Variant Interpretation, Gene-Disease Lookup]
+    - id: pharmacovigilance
+      name: Pharmacovigilance Analyst
+      description: Monitors post-market drug safety using adverse-event corpora
+      workflows: [Drug Safety Surveillance]
+    - id: bioinformatician
+      name: Bioinformatician
+      description: Builds and runs computational pipelines over sequencing and other omics data
+      workflows: [Variant Interpretation, Sample Registration to Sequencing, Federated Genomic Cohort Discovery]
+    - id: lab-scientist
+      name: Lab Scientist
+      description: Performs bench experiments, registers samples and entries in an ELN/LIMS
+      workflows: [Sample Registration to Sequencing]
+    - id: ehr-developer
+      name: Clinical App Developer
+      description: Builds applications that integrate with EHRs via FHIR and SMART
+      workflows: [EHR App Launch]
+    - id: pharmacy-informaticist
+      name: Pharmacy Informaticist
+      description: Owns drug terminology mapping and clinical decision support
+      workflows: [Drug Identifier Normalization]
+
+  domains:
+    - name: Clinical Trials
+      description: Registries and information systems for human research studies
+      apis: [ctgov, ctis]
+    - name: Drug and Regulatory Data
+      description: Drug terminology, labelling, safety, and pharmacology
+      apis: [openfda, dailymed, rxnorm, drugbank]
+    - name: Genomics and Variation
+      description: Reference genomes, gene annotation, and variant data
+      apis: [entrez, ensembl, ucsc, ga4gh]
+    - name: Health Data Exchange
+      description: Standards-based exchange of patient and clinical data
+      apis: [fhir, smart]
+    - name: Laboratory Informatics
+      description: ELN, LIMS, and scientific data platforms for R&D
+      apis: [benchling, tetra]
+    - name: Bioinformatics Compute
+      description: Hosted pipelines and federated genomic compute
+      apis: [dnanexus, sbg, galaxy, ga4gh]
+
+crossReference:
+  - resource: Clinical Trial
+    operations: [search, read, list]
+    apis: [ctgov, ctis]
+    personas: [Trial Coordinator, Patient Advocate, Oncologist]
+  - resource: Drug
+    operations: [search, lookup, normalize]
+    apis: [rxnorm, dailymed, openfda, drugbank]
+    personas: [Pharmacy Informaticist, Clinical Decision Support Engineer]
+  - resource: Adverse Event Report
+    operations: [search, aggregate]
+    apis: [openfda]
+    personas: [Pharmacovigilance Analyst, Regulatory Affairs]
+  - resource: Gene
+    operations: [lookup, search]
+    apis: [entrez, ensembl, ucsc]
+    personas: [Clinical Geneticist, Bioinformatician, Translational Scientist]
+  - resource: Variant
+    operations: [lookup, annotate]
+    apis: [entrez, ensembl, ga4gh]
+    personas: [Clinical Geneticist, Bioinformatician]
+  - resource: FHIR Resource
+    operations: [read, search, create, update]
+    apis: [fhir, smart]
+    personas: [Clinical App Developer, EHR Administrator]
+  - resource: Workflow Run
+    operations: [submit, monitor, retrieve]
+    apis: [galaxy, dnanexus, sbg, ga4gh]
+    personas: [Bioinformatician, Bioinformatics Engineer]

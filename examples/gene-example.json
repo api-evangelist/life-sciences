@@ -1,0 +1,51 @@
+{
+  "hgncSymbol": "BRCA1",
+  "hgncId": "HGNC:1100",
+  "ensemblId": "ENSG00000012048",
+  "ncbiGeneId": "672",
+  "name": "BRCA1 DNA repair associated",
+  "aliases": ["RNF53", "BRCC1", "PPP1R53", "FANCS"],
+  "organism": {
+    "scientificName": "Homo sapiens",
+    "taxonomyId": 9606
+  },
+  "chromosome": "17",
+  "location": {
+    "assembly": "GRCh38",
+    "chromosome": "17",
+    "start": 43044295,
+    "end": 43125483,
+    "strand": "-"
+  },
+  "biotype": "protein_coding",
+  "description": "Tumor suppressor gene whose protein product participates in DNA damage response and homologous recombination repair; germline pathogenic variants confer hereditary breast and ovarian cancer susceptibility.",
+  "transcripts": [
+    {
+      "id": "ENST00000357654",
+      "biotype": "protein_coding",
+      "isCanonical": true
+    },
+    {
+      "id": "ENST00000471181",
+      "biotype": "protein_coding",
+      "isCanonical": false
+    }
+  ],
+  "phenotypes": [
+    {
+      "name": "Hereditary breast and ovarian cancer syndrome",
+      "source": "MONDO",
+      "identifier": "MONDO:0011450"
+    },
+    {
+      "name": "Breast-ovarian cancer, familial, susceptibility to, 1",
+      "source": "OMIM",
+      "identifier": "OMIM:604370"
+    }
+  ],
+  "crossReferences": {
+    "uniprot": ["P38398"],
+    "omim": "113705",
+    "refseq": ["NM_007294", "NM_007297", "NM_007298"]
+  }
+}

@@ -1,0 +1,487 @@
+aid: life-sciences
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/apis.yml
+name: Life Sciences
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Life Sciences
+  - Biotech
+  - Pharma
+  - Healthcare
+  - Clinical Trials
+  - Drug Information
+  - Genomics
+  - Bioinformatics
+  - EHR
+  - FHIR
+  - Lab Informatics
+description: >-
+  Industry-vertical index for the life sciences, biotechnology, and
+  pharmaceutical landscape. Catalogs the major public and commercial APIs
+  spanning clinical trial registries, drug and regulatory data, genomic
+  reference data, electronic health record exchange, laboratory informatics
+  systems, and bioinformatics pipeline platforms. The catalog is anchored by
+  shared schemas for the three core records that recur across this domain:
+  the clinical trial, the drug, and the gene.
+created: '2025-01-01'
+modified: '2026-05-23'
+specificationVersion: '0.19'
+apis:
+  - name: ClinicalTrials.gov API v2
+    description: >-
+      The U.S. National Library of Medicine's modernized REST/JSON API for the
+      ClinicalTrials.gov registry. Provides programmatic access to records of
+      privately and publicly funded clinical studies conducted around the
+      world, replacing the legacy AACT/full-study download path with a
+      JSON-first interface and OpenAPI specification.
+    humanURL: https://clinicaltrials.gov/data-api/api
+    baseURL: https://clinicaltrials.gov/api/v2/
+    tags:
+      - Clinical Trials
+      - Registry
+      - NIH
+      - NLM
+      - Public Data
+    properties:
+      - type: Documentation
+        url: https://clinicaltrials.gov/data-api/api
+      - type: Documentation
+        url: https://clinicaltrials.gov/data-api/about-api
+        title: About the API
+      - type: OpenAPI
+        url: https://clinicaltrials.gov/api/v2/swagger.yaml
+        title: ClinicalTrials.gov v2 OpenAPI
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/clinical-trial-schema.json
+        title: Clinical Trial Schema
+      - type: Example
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/examples/clinical-trial-example.json
+        title: Clinical Trial Example
+  - name: EU Clinical Trials Register / CTIS
+    description: >-
+      The European Medicines Agency's Clinical Trials Information System
+      (CTIS) and the legacy EU Clinical Trials Register. CTIS is the single
+      entry point for sponsors and regulators across the EU/EEA to submit and
+      supervise clinical trials under Regulation (EU) No 536/2014. Public
+      lookup is offered through a web portal; bulk and integration interfaces
+      are not openly published as REST APIs.
+    humanURL: https://euclinicaltrials.eu/
+    baseURL: https://euclinicaltrials.eu/ctis-public/
+    tags:
+      - Clinical Trials
+      - EU
+      - EMA
+      - Regulator
+      - CTIS
+    properties:
+      - type: Documentation
+        url: https://euclinicaltrials.eu/
+      - type: Documentation
+        url: https://www.ema.europa.eu/en/human-regulatory-overview/research-development/clinical-trials-human-medicines/clinical-trials-information-system
+        title: EMA CTIS overview
+      - type: HumanInterface
+        url: https://www.clinicaltrialsregister.eu/
+        title: Legacy EU Clinical Trials Register
+  - name: openFDA
+    description: >-
+      A U.S. Food and Drug Administration project that exposes public FDA data
+      via a single Elasticsearch-backed REST/JSON API. Covers adverse-event
+      reports, drug labels, recalls, NDC directory, device 510(k) and adverse
+      events, food enforcement, tobacco problem reports, and animal/vet
+      adverse events.
+    humanURL: https://open.fda.gov/
+    baseURL: https://api.fda.gov/
+    tags:
+      - FDA
+      - Drug
+      - Device
+      - Food
+      - Adverse Events
+      - Regulator
+    properties:
+      - type: Documentation
+        url: https://open.fda.gov/apis/
+      - type: Documentation
+        url: https://open.fda.gov/apis/drug/
+        title: Drug endpoints
+      - type: Documentation
+        url: https://open.fda.gov/apis/device/
+        title: Device endpoints
+      - type: Documentation
+        url: https://open.fda.gov/apis/food/
+        title: Food endpoints
+      - type: GitHubRepository
+        url: https://github.com/FDA/openfda
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/drug-schema.json
+        title: Drug Schema
+      - type: Example
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/examples/drug-example.json
+        title: Drug Example
+  - name: DailyMed
+    description: >-
+      The National Library of Medicine's authoritative source of FDA-approved
+      Structured Product Labeling (SPL) for prescription and over-the-counter
+      medications marketed in the United States. Exposes a REST/JSON web
+      services API for searching and retrieving SPL documents by SET ID, NDC,
+      RxCUI, and other identifiers.
+    humanURL: https://dailymed.nlm.nih.gov/dailymed/
+    baseURL: https://dailymed.nlm.nih.gov/dailymed/services/v2/
+    tags:
+      - Drug Information
+      - Labeling
+      - SPL
+      - NLM
+    properties:
+      - type: Documentation
+        url: https://dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm
+        title: DailyMed Web Services
+  - name: RxNorm API
+    description: >-
+      The National Library of Medicine's web service for accessing RxNorm, the
+      standardized nomenclature for clinical drugs that links names of drugs
+      across the major U.S. drug vocabularies. Supports name-to-RxCUI
+      resolution, NDC lookup, relationship traversal, interaction discovery
+      via RxNav, and approximate matching.
+    humanURL: https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html
+    baseURL: https://rxnav.nlm.nih.gov/REST/
+    tags:
+      - Drug Information
+      - Terminology
+      - NLM
+      - RxNorm
+    properties:
+      - type: Documentation
+        url: https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html
+      - type: Documentation
+        url: https://lhncbc.nlm.nih.gov/RxNav/APIs/InteractionAPIs.html
+        title: Interaction API
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/drug-schema.json
+        title: Drug Schema
+  - name: DrugBank API
+    description: >-
+      A commercial drug knowledge API providing curated pharmacology,
+      pharmacokinetics, drug-drug interaction, indication, and identifier
+      cross-walk data covering small molecules and biologics. Used by clinical
+      decision support, electronic prescribing, and pharmacy systems.
+    humanURL: https://docs.drugbank.com/v1/
+    baseURL: https://api.drugbankplus.com/v1/
+    tags:
+      - Drug Information
+      - Pharmacology
+      - Interactions
+      - Commercial
+    properties:
+      - type: Documentation
+        url: https://docs.drugbank.com/v1/
+      - type: Documentation
+        url: https://go.drugbank.com/
+        title: DrugBank Online
+  - name: NCBI Entrez E-utilities
+    description: >-
+      The set of nine programmatic interfaces (ESearch, EPost, ESummary,
+      EFetch, ELink, EInfo, EGQuery, ESpell, ECitMatch) that provide unified
+      access to all NCBI databases including PubMed, Gene, Genome, Nucleotide,
+      Protein, ClinVar, dbSNP, dbGaP, BioProject, BioSample, GEO, and Taxonomy.
+    humanURL: https://www.ncbi.nlm.nih.gov/books/NBK25500/
+    baseURL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/
+    tags:
+      - Genomics
+      - Bioinformatics
+      - NCBI
+      - PubMed
+      - Reference Data
+    properties:
+      - type: Documentation
+        url: https://www.ncbi.nlm.nih.gov/books/NBK25500/
+      - type: Documentation
+        url: https://www.ncbi.nlm.nih.gov/books/NBK25501/
+        title: A General Introduction to the E-utilities
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/gene-schema.json
+        title: Gene Schema
+  - name: Ensembl REST API
+    description: >-
+      The European Bioinformatics Institute's REST/JSON interface to the
+      Ensembl genome browser. Provides programmatic access to genomic
+      annotation, variation, comparative genomics, regulatory data, the
+      Variant Effect Predictor (VEP), and GA4GH-compatible variation
+      endpoints across vertebrate, invertebrate, plant, and fungal genomes.
+    humanURL: https://rest.ensembl.org/
+    baseURL: https://rest.ensembl.org/
+    tags:
+      - Genomics
+      - Variation
+      - VEP
+      - EBI
+      - GA4GH
+    properties:
+      - type: Documentation
+        url: https://rest.ensembl.org/
+      - type: Documentation
+        url: https://rest.ensembl.org/documentation/info/vep_hgvs_get
+        title: VEP endpoints
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/gene-schema.json
+        title: Gene Schema
+      - type: Example
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/examples/gene-example.json
+        title: Gene Example
+  - name: UCSC Genome Browser REST API
+    description: >-
+      The University of California Santa Cruz Genome Browser's REST API for
+      programmatic retrieval of assemblies, tracks, sequences, and annotations
+      across the genomes hosted in the UCSC Browser, including human (hg19,
+      hg38, T2T-CHM13), mouse, and many other species.
+    humanURL: https://genome.ucsc.edu/goldenPath/help/api.html
+    baseURL: https://api.genome.ucsc.edu/
+    tags:
+      - Genomics
+      - Reference Genome
+      - UCSC
+      - Tracks
+    properties:
+      - type: Documentation
+        url: https://genome.ucsc.edu/goldenPath/help/api.html
+  - name: ClinVar (via E-utilities)
+    description: >-
+      The NIH/NLM database of relationships among human genomic variation and
+      phenotype, with supporting evidence. Accessible programmatically via
+      Entrez E-utilities and via a structured FTP feed of XML/JSON variant
+      submissions.
+    humanURL: https://www.ncbi.nlm.nih.gov/clinvar/
+    baseURL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/
+    tags:
+      - Variation
+      - Clinical Genomics
+      - NCBI
+      - ClinVar
+    properties:
+      - type: Documentation
+        url: https://www.ncbi.nlm.nih.gov/clinvar/docs/maintenance_use/
+      - type: Documentation
+        url: https://www.ncbi.nlm.nih.gov/clinvar/docs/linking/
+        title: Linking to ClinVar
+  - name: dbSNP (via E-utilities)
+    description: >-
+      The NCBI Short Genetic Variations database, the canonical reference for
+      single nucleotide polymorphisms (SNPs) and small insertions/deletions in
+      humans and other organisms. Accessed via Entrez E-utilities using the
+      `snp` database.
+    humanURL: https://www.ncbi.nlm.nih.gov/snp/
+    baseURL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/
+    tags:
+      - Variation
+      - SNP
+      - NCBI
+      - dbSNP
+    properties:
+      - type: Documentation
+        url: https://www.ncbi.nlm.nih.gov/snp/docs/
+  - name: HL7 FHIR
+    description: >-
+      Fast Healthcare Interoperability Resources (FHIR) is HL7's standard for
+      health care data exchange. The current normative version is R5, released
+      March 2023. Defines roughly 150 resource types covering administration,
+      clinical care, diagnostics, medications, workflow, financial, and
+      foundation domains, exchanged over REST, messaging, or document
+      paradigms.
+    humanURL: https://www.hl7.org/fhir/
+    baseURL: https://hl7.org/fhir/R5/
+    tags:
+      - FHIR
+      - HL7
+      - EHR
+      - Healthcare Interoperability
+      - Standard
+    properties:
+      - type: Documentation
+        url: https://www.hl7.org/fhir/
+      - type: Specification
+        url: https://hl7.org/fhir/R5/
+        title: FHIR R5 specification
+      - type: JSONSchema
+        url: https://hl7.org/fhir/R5/fhir.schema.json.zip
+        title: FHIR JSON Schema (official)
+      - type: GitHubRepository
+        url: https://github.com/HL7/fhir
+  - name: SMART on FHIR
+    description: >-
+      An open-spec authorization profile layered on top of FHIR that enables
+      third-party clinical applications to launch within an EHR session with
+      OAuth 2.0 / OpenID Connect scopes scoped to FHIR resources.
+    humanURL: https://docs.smarthealthit.org/
+    baseURL: https://docs.smarthealthit.org/
+    tags:
+      - FHIR
+      - SMART
+      - OAuth
+      - EHR
+      - Standard
+    properties:
+      - type: Documentation
+        url: https://docs.smarthealthit.org/
+      - type: GitHubRepository
+        url: https://github.com/smart-on-fhir
+  - name: Benchling Developer Platform
+    description: >-
+      Benchling's REST API and webhook platform for its R&D cloud, exposing
+      programmatic access to the Notebook (entries), Registry (registered
+      entities, sequences, plasmids), Inventory (boxes, plates, locations),
+      Requests, Results, Schemas, and Projects domains used across biotech
+      R&D organizations.
+    humanURL: https://docs.benchling.com/
+    baseURL: https://{tenant}.benchling.com/api/v2/
+    tags:
+      - Lab Informatics
+      - ELN
+      - LIMS
+      - Biotech
+      - Commercial
+    properties:
+      - type: Documentation
+        url: https://docs.benchling.com/
+      - type: Documentation
+        url: https://docs.benchling.com/reference
+        title: API reference
+  - name: TetraScience Data Platform
+    description: >-
+      A cloud-native scientific data platform that harmonizes instrument and
+      informatics data across pharma R&D. Exposes REST APIs and SDKs for
+      ingesting, querying, and integrating laboratory and computational data
+      using the Intermediate Data Schema (IDS).
+    humanURL: https://developers.tetrascience.com/
+    baseURL: https://developers.tetrascience.com/
+    tags:
+      - Lab Informatics
+      - Scientific Data
+      - IDS
+      - Commercial
+    properties:
+      - type: Documentation
+        url: https://developers.tetrascience.com/
+  - name: Sapio Sciences ELN/LIMS API
+    description: >-
+      Sapio Sciences' platform API providing programmatic access to its
+      Electronic Laboratory Notebook, Laboratory Information Management
+      System, and Scientific Data Cloud, covering samples, experiments,
+      assay results, and inventory.
+    humanURL: https://www.sapiosciences.com/
+    baseURL: https://www.sapiosciences.com/
+    tags:
+      - Lab Informatics
+      - ELN
+      - LIMS
+      - Commercial
+    properties:
+      - type: Documentation
+        url: https://www.sapiosciences.com/
+  - name: DNAnexus Platform API
+    description: >-
+      DNAnexus is a cloud bioinformatics platform used by pharma, biotech, and
+      research institutions to run genomic and biomedical compute workflows.
+      Its platform API provides programmatic access to projects, files, apps,
+      workflows, jobs, and analyses for petabyte-scale genomic data.
+    humanURL: https://documentation.dnanexus.com/
+    baseURL: https://api.dnanexus.com/
+    tags:
+      - Bioinformatics
+      - Cloud Compute
+      - Workflows
+      - Commercial
+    properties:
+      - type: Documentation
+        url: https://documentation.dnanexus.com/
+      - type: Documentation
+        url: https://documentation.dnanexus.com/developer/api
+        title: Developer / API reference
+  - name: Seven Bridges (Velsera) Platform API
+    description: >-
+      A multi-cloud bioinformatics platform (now part of Velsera) offering
+      hosted instances of the NCI Cancer Genomics Cloud and other cohort
+      analysis environments. Provides REST APIs for projects, files, tasks,
+      and apps written in CWL.
+    humanURL: https://docs.sevenbridges.com/
+    baseURL: https://api.sbgenomics.com/v2/
+    tags:
+      - Bioinformatics
+      - Cloud Compute
+      - CWL
+      - Cancer Genomics
+    properties:
+      - type: Documentation
+        url: https://docs.sevenbridges.com/
+  - name: Galaxy Project API
+    description: >-
+      The open-source Galaxy bioinformatics workbench exposes a REST API for
+      managing histories, datasets, workflows, tools, jobs, and users across
+      community Galaxy servers and self-hosted installations.
+    humanURL: https://docs.galaxyproject.org/en/latest/api_doc.html
+    baseURL: https://usegalaxy.org/api/
+    tags:
+      - Bioinformatics
+      - Open Source
+      - Workflows
+      - Galaxy
+    properties:
+      - type: Documentation
+        url: https://docs.galaxyproject.org/en/latest/api_doc.html
+      - type: GitHubRepository
+        url: https://github.com/galaxyproject/galaxy
+  - name: GA4GH APIs (htsget, DRS, WES, TES, Beacon)
+    description: >-
+      The Global Alliance for Genomics and Health publishes a suite of open
+      REST specifications enabling federated access to genomic data and
+      compute. Includes htsget (sequencing reads), DRS (Data Repository
+      Service), WES (Workflow Execution Service), TES (Task Execution
+      Service), and the Beacon variant-discovery protocol.
+    humanURL: https://www.ga4gh.org/genomic-data-toolkit/
+    baseURL: https://www.ga4gh.org/
+    tags:
+      - Genomics
+      - Standard
+      - GA4GH
+      - Federated
+    properties:
+      - type: Documentation
+        url: https://www.ga4gh.org/genomic-data-toolkit/
+      - type: GitHubRepository
+        url: https://github.com/ga4gh
+      - type: Specification
+        url: https://samtools.github.io/hts-specs/htsget.html
+        title: htsget specification
+      - type: Specification
+        url: https://ga4gh.github.io/beacon/
+        title: Beacon specification
+json-schemas:
+  - title: Clinical Trial
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/clinical-trial-schema.json
+  - title: Drug
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/drug-schema.json
+  - title: Gene
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/gene-schema.json
+json-ld:
+  - title: Life Sciences Context
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-ld/life-sciences-context.jsonld
+vocabulary:
+  - title: Life Sciences Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/vocabulary/life-sciences-vocabulary.yaml
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    url: https://apievangelist.com
