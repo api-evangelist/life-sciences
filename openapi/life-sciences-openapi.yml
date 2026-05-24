@@ -1,0 +1,167 @@
+openapi: 3.1.0
+info:
+  title: ClinicalTrials.gov API v2
+  description: |
+    A partial OpenAPI 3.1 representation of the ClinicalTrials.gov v2 REST/JSON
+    API. ClinicalTrials.gov is the U.S. National Library of Medicine's registry
+    of clinical studies. The v2 API replaces the legacy AACT/full-study download
+    path with a JSON-first interface. The API is open and does not require
+    authentication for read access. The authoritative OpenAPI document is
+    published at https://clinicaltrials.gov/api/v2/swagger.yaml.
+  version: "2.0.0"
+  contact:
+    name: ClinicalTrials.gov
+    url: https://clinicaltrials.gov/data-api/api
+  license:
+    name: Public Domain (U.S. Government Work)
+servers:
+  - url: https://clinicaltrials.gov/api/v2
+    description: Production
+paths:
+  /studies:
+    get:
+      summary: Search studies
+      description: |
+        Returns a paginated list of studies that match the search expression.
+        Supports field selection, filtering, geo distance, and sorting.
+      operationId: searchStudies
+      parameters:
+        - name: query.term
+          in: query
+          description: Essie expression to search across the full study document.
+          schema:
+            type: string
+        - name: query.cond
+          in: query
+          description: Search expression scoped to conditions and diseases.
+          schema:
+            type: string
+        - name: query.intr
+          in: query
+          description: Search expression scoped to interventions.
+          schema:
+            type: string
+        - name: filter.overallStatus
+          in: query
+          description: Comma-separated overall study status values to filter on.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of studies per page (max 1000).
+          schema:
+            type: integer
+            default: 10
+            maximum: 1000
+        - name: pageToken
+          in: query
+          description: Token for fetching the next page.
+          schema:
+            type: string
+        - name: format
+          in: query
+          description: Response format.
+          schema:
+            type: string
+            enum: [json, csv]
+            default: json
+      responses:
+        '200':
+          description: Paginated list of matching studies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudiesPage'
+  /studies/{nctId}:
+    get:
+      summary: Get a single study by NCT ID
+      description: Returns the full study record identified by its NCT identifier.
+      operationId: getStudy
+      parameters:
+        - name: nctId
+          in: path
+          required: true
+          description: ClinicalTrials.gov identifier, e.g. NCT00000000.
+          schema:
+            type: string
+            pattern: '^NCT\d{8}$'
+        - name: format
+          in: query
+          schema:
+            type: string
+            enum: [json, csv]
+            default: json
+      responses:
+        '200':
+          description: The requested study record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Study'
+        '404':
+          description: No study found for the given NCT ID.
+  /studies/metadata:
+    get:
+      summary: Get study data model metadata
+      description: Returns metadata describing the study data model and field definitions.
+      operationId: getStudyMetadata
+      responses:
+        '200':
+          description: Study metadata document.
+          content:
+            application/json:
+              schema:
+                type: object
+  /stats/size:
+    get:
+      summary: Get registry size statistics
+      description: Returns counts and size statistics for the studies in the registry.
+      operationId: getSizeStats
+      responses:
+        '200':
+          description: Size statistics.
+          content:
+            application/json:
+              schema:
+                type: object
+  /version:
+    get:
+      summary: Get API version information
+      description: Returns the version of the ClinicalTrials.gov API and data snapshot.
+      operationId: getVersion
+      responses:
+        '200':
+          description: Version information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiVersion:
+                    type: string
+                  dataTimestamp:
+                    type: string
+                    format: date-time
+components:
+  schemas:
+    Study:
+      type: object
+      description: A clinical study record. The authoritative schema lives in the upstream swagger.yaml.
+      properties:
+        protocolSection:
+          type: object
+        derivedSection:
+          type: object
+        hasResults:
+          type: boolean
+    StudiesPage:
+      type: object
+      properties:
+        studies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Study'
+        nextPageToken:
+          type: string
+        totalCount:
+          type: integer
