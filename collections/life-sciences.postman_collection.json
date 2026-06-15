@@ -1,0 +1,519 @@
+{
+  "item": [
+    {
+      "id": "d1a15bb9-307b-4898-8639-cb2d37599c7f",
+      "name": "Search studies",
+      "request": {
+        "name": "Search studies",
+        "description": {
+          "content": "Returns a paginated list of studies that match the search expression.\nSupports field selection, filtering, geo distance, and sorting.\n",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "studies"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "query.term",
+              "value": "<string>",
+              "description": "Essie expression to search across the full study document."
+            },
+            {
+              "disabled": false,
+              "key": "query.cond",
+              "value": "<string>",
+              "description": "Search expression scoped to conditions and diseases."
+            },
+            {
+              "disabled": false,
+              "key": "query.intr",
+              "value": "<string>",
+              "description": "Search expression scoped to interventions."
+            },
+            {
+              "disabled": false,
+              "key": "filter.overallStatus",
+              "value": "<string>",
+              "description": "Comma-separated overall study status values to filter on."
+            },
+            {
+              "disabled": false,
+              "key": "pageSize",
+              "value": "10",
+              "description": "Number of studies per page (max 1000)."
+            },
+            {
+              "disabled": false,
+              "key": "pageToken",
+              "value": "<string>",
+              "description": "Token for fetching the next page."
+            },
+            {
+              "disabled": false,
+              "key": "format",
+              "value": "json",
+              "description": "Response format."
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "f0d774fa-8dce-4980-83cf-5044c413db47",
+          "name": "Paginated list of matching studies.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "studies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query.term",
+                  "value": "<string>"
+                },
+                {
+                  "key": "query.cond",
+                  "value": "<string>"
+                },
+                {
+                  "key": "query.intr",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filter.overallStatus",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "pageToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"studies\": [\n    {\n      \"protocolSection\": {},\n      \"derivedSection\": {},\n      \"hasResults\": false\n    },\n    {\n      \"protocolSection\": {},\n      \"derivedSection\": {},\n      \"hasResults\": false\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"totalCount\": 8668\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0a02a52c-5294-4386-b28c-0d6ce8d5f1f4",
+      "name": "Get a single study by NCT ID",
+      "request": {
+        "name": "Get a single study by NCT ID",
+        "description": {
+          "content": "Returns the full study record identified by its NCT identifier.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "studies",
+            ":nctId"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "format",
+              "value": "json"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "nctId",
+              "description": "(Required) ClinicalTrials.gov identifier, e.g. NCT00000000."
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "39d321e7-46ac-450b-98bd-46cda65ea473",
+          "name": "The requested study record.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "studies",
+                ":nctId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nctId",
+                  "description": "(Required) ClinicalTrials.gov identifier, e.g. NCT00000000."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"protocolSection\": {},\n  \"derivedSection\": {},\n  \"hasResults\": false\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "642c694e-3380-4439-a5e3-d65405ee1e88",
+          "name": "No study found for the given NCT ID.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "studies",
+                ":nctId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "json"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "nctId",
+                  "description": "(Required) ClinicalTrials.gov identifier, e.g. NCT00000000."
+                }
+              ]
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e4e9432a-5aa9-4fee-8b08-046b17f7836e",
+      "name": "Get study data model metadata",
+      "request": {
+        "name": "Get study data model metadata",
+        "description": {
+          "content": "Returns metadata describing the study data model and field definitions.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "studies",
+            "metadata"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4c950fc3-ee94-43d3-9545-5c0fc97687dd",
+          "name": "Study metadata document.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "studies",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "4e3f7685-0635-408e-b605-e2222eff2b5a",
+      "name": "Get registry size statistics",
+      "request": {
+        "name": "Get registry size statistics",
+        "description": {
+          "content": "Returns counts and size statistics for the studies in the registry.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "stats",
+            "size"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "aae3e591-7fa3-4647-acbb-72302ac4842f",
+          "name": "Size statistics.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "stats",
+                "size"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "39132ad1-c5ba-4190-a441-94904577ea33",
+      "name": "Get API version information",
+      "request": {
+        "name": "Get API version information",
+        "description": {
+          "content": "Returns the version of the ClinicalTrials.gov API and data snapshot.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "version"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "a7983511-1712-4bb8-beae-0c5280998fae",
+          "name": "Version information.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"apiVersion\": \"string\",\n  \"dataTimestamp\": \"1948-07-31T02:02:44.399Z\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://clinicaltrials.gov/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bd9d7b73-bf15-4276-bd8b-f9c0a4e8e766",
+    "name": "ClinicalTrials.gov API v2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A partial OpenAPI 3.1 representation of the ClinicalTrials.gov v2 REST/JSON\nAPI. ClinicalTrials.gov is the U.S. National Library of Medicine's registry\nof clinical studies. The v2 API replaces the legacy AACT/full-study download\npath with a JSON-first interface. The API is open and does not require\nauthentication for read access. The authoritative OpenAPI document is\npublished at https://clinicaltrials.gov/api/v2/swagger.yaml.\n\n\nContact Support:\n Name: ClinicalTrials.gov",
+      "type": "text/plain"
+    }
+  }
+}
