@@ -56,7 +56,7 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/clinical-trial-schema.json
         title: Clinical Trial Schema
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/examples/clinical-trial-example.json
         title: Clinical Trial Example
@@ -119,7 +119,7 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/drug-schema.json
         title: Drug Schema
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/examples/drug-example.json
         title: Drug Example
@@ -233,7 +233,7 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/json-schema/gene-schema.json
         title: Gene Schema
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/life-sciences/refs/heads/main/examples/gene-example.json
         title: Gene Example
