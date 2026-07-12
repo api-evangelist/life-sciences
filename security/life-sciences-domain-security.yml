@@ -1,0 +1,38 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: clinicaltrials.gov
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 26 14:32:09 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: euclinicaltrials.eu
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 23 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: open.fda.gov
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  2 18:57:13 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: clinicaltrials.gov
+  dnssec: true
+  caa:
+  - 0 issue "letsencrypt.org"
+  - 0 issuewild "letsencrypt.org"
+  - 0 issuewild "godaddy.com"
+  - 0 issue "godaddy.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: euclinicaltrials.eu
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
