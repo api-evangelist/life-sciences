@@ -486,5 +486,7 @@ maintainers:
     email: info@apievangelist.com
     url: https://apievangelist.com
 common:
+- type: AgenticAccess
+  url: agentic-access/life-sciences-agentic-access.yml
 - type: DomainSecurity
   url: security/life-sciences-domain-security.yml
