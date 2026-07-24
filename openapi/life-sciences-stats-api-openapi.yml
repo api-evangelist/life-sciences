@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+  title: ClinicalTrials.gov API v2 Stats API
+  description: 'A partial OpenAPI 3.1 representation of the ClinicalTrials.gov v2 REST/JSON
+
+    API. ClinicalTrials.gov is the U.S. National Library of Medicine''s registry
+
+    of clinical studies. The v2 API replaces the legacy AACT/full-study download
+
+    path with a JSON-first interface. The API is open and does not require
+
+    authentication for read access. The authoritative OpenAPI document is
+
+    published at https://clinicaltrials.gov/api/v2/swagger.yaml.
+
+    '
+  version: 2.0.0
+  contact:
+    name: ClinicalTrials.gov
+    url: https://clinicaltrials.gov/data-api/api
+  license:
+    name: Public Domain (U.S. Government Work)
+servers:
+- url: https://clinicaltrials.gov/api/v2
+  description: Production
+tags:
+- name: Stats
+paths:
+  /stats/size:
+    get:
+      summary: Get registry size statistics
+      description: Returns counts and size statistics for the studies in the registry.
+      operationId: getSizeStats
+      responses:
+        '200':
+          description: Size statistics.
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Stats
