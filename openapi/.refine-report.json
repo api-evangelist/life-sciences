@@ -1,0 +1,18 @@
+{
+  "provider": "life-sciences",
+  "sources": [
+    "life-sciences-stats-api-openapi.yml",
+    "life-sciences-studies-api-openapi.yml",
+    "life-sciences-version-api-openapi.yml"
+  ],
+  "outputs": [
+    "life-sciences-stats-api-openapi.yml",
+    "life-sciences-studies-api-openapi.yml",
+    "life-sciences-version-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
