@@ -501,6 +501,15 @@ maintainers:
     email: info@apievangelist.com
     url: https://apievangelist.com
 common:
+- type: IssueTracker
+  url: https://github.com/FDA/openfda/issues
+- type: SecurityPolicy
+  url: https://github.com/FDA/openfda/blob/master/SECURITY.md
+- type: ContributionGuide
+  url: https://github.com/FDA/openfda/blob/master/CONTRIBUTING.txt
+- type: License
+  name: CC0-1.0
+  url: https://github.com/FDA/openfda/blob/master/LICENSE
 - type: AgenticAccess
   url: agentic-access/life-sciences-agentic-access.yml
 - type: DomainSecurity
