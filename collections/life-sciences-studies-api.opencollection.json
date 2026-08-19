@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ClinicalTrials.gov API v2 Stats Studies API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Studies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search studies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clinicaltrials.gov/api/v2/studies",
+            "params": [
+              {
+                "name": "query.term",
+                "value": "",
+                "type": "query",
+                "description": "Essie expression to search across the full study document."
+              },
+              {
+                "name": "query.cond",
+                "value": "",
+                "type": "query",
+                "description": "Search expression scoped to conditions and diseases."
+              },
+              {
+                "name": "query.intr",
+                "value": "",
+                "type": "query",
+                "description": "Search expression scoped to interventions."
+              },
+              {
+                "name": "filter.overallStatus",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated overall study status values to filter on."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of studies per page (max 1000)."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for fetching the next page."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of studies that match the search expression.\nSupports field selection, filtering, geo distance, and sorting.\n"
+        },
+        {
+          "info": {
+            "name": "Get a single study by NCT ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clinicaltrials.gov/api/v2/studies/:nctId",
+            "params": [
+              {
+                "name": "nctId",
+                "value": "",
+                "type": "path",
+                "description": "ClinicalTrials.gov identifier, e.g. NCT00000000."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the full study record identified by its NCT identifier."
+        },
+        {
+          "info": {
+            "name": "Get study data model metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clinicaltrials.gov/api/v2/studies/metadata"
+          },
+          "docs": "Returns metadata describing the study data model and field definitions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

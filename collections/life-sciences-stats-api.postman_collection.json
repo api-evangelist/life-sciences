@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "e90556fc-7cda-4c76-8757-bc63899be356",
+      "name": "Stats",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64fcebfb-f288-4534-a82d-0615928c5f93",
+          "name": "Get registry size statistics",
+          "request": {
+            "name": "Get registry size statistics",
+            "description": {
+              "content": "Returns counts and size statistics for the studies in the registry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stats",
+                "size"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d17287a-95fd-4c45-a0ec-df86ead4f746",
+              "name": "Size statistics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats",
+                    "size"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://clinicaltrials.gov/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f9a4731e-5341-4c1b-8dd2-4d0679950540",
+    "name": "ClinicalTrials.gov API v2 Stats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A partial OpenAPI 3.1 representation of the ClinicalTrials.gov v2 REST/JSON\nAPI. ClinicalTrials.gov is the U.S. National Library of Medicine's registry\nof clinical studies. The v2 API replaces the legacy AACT/full-study download\npath with a JSON-first interface. The API is open and does not require\nauthentication for read access. The authoritative OpenAPI document is\npublished at https://clinicaltrials.gov/api/v2/swagger.yaml.\n\n\nContact Support:\n Name: ClinicalTrials.gov",
+      "type": "text/plain"
+    }
+  }
+}

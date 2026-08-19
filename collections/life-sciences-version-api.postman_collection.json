@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "705c09de-6e15-4c93-a29e-0eb9c0c531ea",
+      "name": "Version",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cdab9828-5dda-47f0-a9dd-6ffd6e9e9231",
+          "name": "Get API version information",
+          "request": {
+            "name": "Get API version information",
+            "description": {
+              "content": "Returns the version of the ClinicalTrials.gov API and data snapshot.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d31b71b0-9efb-4cbc-a18e-d899ba584c3b",
+              "name": "Version information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apiVersion\": \"string\",\n  \"dataTimestamp\": \"1990-03-31T20:56:36.453Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://clinicaltrials.gov/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e3abcf44-a369-4e7a-afa3-4d6c22cae4c7",
+    "name": "ClinicalTrials.gov API v2 Stats Version API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A partial OpenAPI 3.1 representation of the ClinicalTrials.gov v2 REST/JSON\nAPI. ClinicalTrials.gov is the U.S. National Library of Medicine's registry\nof clinical studies. The v2 API replaces the legacy AACT/full-study download\npath with a JSON-first interface. The API is open and does not require\nauthentication for read access. The authoritative OpenAPI document is\npublished at https://clinicaltrials.gov/api/v2/swagger.yaml.\n\n\nContact Support:\n Name: ClinicalTrials.gov",
+      "type": "text/plain"
+    }
+  }
+}
