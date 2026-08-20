@@ -288,6 +288,12 @@ apis:
   tags:
   - FHIR
   - SMART
+  - Authentication
+  - EHR
+  - Standard
+  tags_raw:
+  - FHIR
+  - SMART
   - OAuth
   - EHR
   - Standard
@@ -385,6 +391,11 @@ apis:
   humanURL: https://docs.galaxyproject.org/en/latest/api_doc.html
   baseURL: https://usegalaxy.org/api/
   tags:
+  - Bioinformatics
+  - Open-Source
+  - Workflows
+  - Galaxy
+  tags_raw:
   - Bioinformatics
   - Open Source
   - Workflows
