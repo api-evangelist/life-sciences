@@ -1,0 +1,25 @@
+slug: life-sciences
+provider: Life Sciences
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Pharmaceuticals & Life Sciences
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Studies
+  spec_file: life-sciences-studies-api-openapi.yml
+  capability_id: BC-1520
+  capability_id_l1: BC-1520
+  capability_name: Clinical Trials Management
+  confidence: 0.8
+  evidence: GET /studies/{nctId}  getStudy  Get a single study by NCT ID; 'registry of clinical studies'
+  reason: Operations search and retrieve clinical study records from the ClinicalTrials.gov registry,
+    which is clinical trial information management; evidence does not name a specific sub-capability (design,
+    sites, subjects or data capture), so L1 only.

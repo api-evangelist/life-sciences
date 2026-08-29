@@ -525,6 +525,9 @@ maintainers:
     email: info@apievangelist.com
     url: https://apievangelist.com
 common:
+- type: CapabilityMap
+  url: capabilities/life-sciences-capability-edges.yml
+  name: Life Sciences Business Capability Map
 - type: IssueTracker
   url: https://github.com/FDA/openfda/issues
 - type: SecurityPolicy
