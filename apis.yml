@@ -280,6 +280,12 @@ apis:
   - HL7
   - EHR
   - Healthcare Interoperability
+  - Standards
+  tags_raw:
+  - FHIR
+  - HL7
+  - EHR
+  - Healthcare Interoperability
   - Standard
   properties:
   - type: Documentation
@@ -303,7 +309,7 @@ apis:
   - SMART
   - Authentication
   - EHR
-  - Standard
+  - Standards
   tags_raw:
   - FHIR
   - SMART
@@ -427,6 +433,11 @@ apis:
   humanURL: https://www.ga4gh.org/genomic-data-toolkit/
   baseURL: https://www.ga4gh.org/
   tags:
+  - Genomics
+  - Standards
+  - GA4GH
+  - Federated
+  tags_raw:
   - Genomics
   - Standard
   - GA4GH
