@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: ClinicalTrials.gov API v2 Stats Studies API
+  title: ClinicalTrials.gov API v2 Studies API
   description: 'A partial OpenAPI 3.1 representation of the ClinicalTrials.gov v2 REST/JSON
 
     API. ClinicalTrials.gov is the U.S. National Library of Medicine''s registry
@@ -11,9 +11,7 @@ info:
 
     authentication for read access. The authoritative OpenAPI document is
 
-    published at https://clinicaltrials.gov/api/v2/swagger.yaml.
-
-    '
+    published at https://clinicaltrials.gov/api/v2/swagger.yaml.'
   version: 2.0.0
   contact:
     name: ClinicalTrials.gov
@@ -31,9 +29,7 @@ paths:
       summary: Search studies
       description: 'Returns a paginated list of studies that match the search expression.
 
-        Supports field selection, filtering, geo distance, and sorting.
-
-        '
+        Supports field selection, filtering, geo distance, and sorting.'
       operationId: searchStudies
       parameters:
       - name: query.term
