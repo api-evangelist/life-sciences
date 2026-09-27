@@ -30,6 +30,18 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/life-sciences.png
 tags:
   - Life Sciences
+  - Biotechnology
+  - Pharma
+  - Healthcare
+  - Clinical Trials
+  - Drug Information
+  - Genomics
+  - Bioinformatics
+  - EHR
+  - FHIR
+  - Lab Informatics
+tags_raw:
+  - Life Sciences
   - Biotech
   - Pharma
   - Healthcare
@@ -279,7 +291,7 @@ apis:
   - FHIR
   - HL7
   - EHR
-  - Healthcare Interoperability
+  - Interoperability
   - Standards
   tags_raw:
   - FHIR
@@ -329,6 +341,12 @@ apis:
   humanURL: https://docs.benchling.com/
   baseURL: https://{tenant}.benchling.com/api/v2/
   tags:
+  - Lab Informatics
+  - ELN
+  - LIMS
+  - Biotechnology
+  - Commercial
+  tags_raw:
   - Lab Informatics
   - ELN
   - LIMS
@@ -411,7 +429,7 @@ apis:
   baseURL: https://usegalaxy.org/api/
   tags:
   - Bioinformatics
-  - Open-Source
+  - Open Source
   - Workflows
   - Galaxy
   tags_raw:
@@ -419,6 +437,7 @@ apis:
   - Open Source
   - Workflows
   - Galaxy
+  - Open-Source
   properties:
   - type: Documentation
     url: https://docs.galaxyproject.org/en/latest/api_doc.html
