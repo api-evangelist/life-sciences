@@ -130,6 +130,16 @@ paths:
       - Studies
 components:
   schemas:
+    Study:
+      type: object
+      description: A clinical study record. The authoritative schema lives in the upstream swagger.yaml.
+      properties:
+        protocolSection:
+          type: object
+        derivedSection:
+          type: object
+        hasResults:
+          type: boolean
     StudiesPage:
       type: object
       properties:
@@ -141,13 +151,3 @@ components:
           type: string
         totalCount:
           type: integer
-    Study:
-      type: object
-      description: A clinical study record. The authoritative schema lives in the upstream swagger.yaml.
-      properties:
-        protocolSection:
-          type: object
-        derivedSection:
-          type: object
-        hasResults:
-          type: boolean
