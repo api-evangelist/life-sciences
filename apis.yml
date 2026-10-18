@@ -37,7 +37,7 @@ tags:
   - Drug Information
   - Genomics
   - Bioinformatics
-  - EHR
+  - Electronic Health Records
   - FHIR
   - Lab Informatics
 tags_raw:
@@ -290,7 +290,7 @@ apis:
   tags:
   - FHIR
   - HL7
-  - EHR
+  - Electronic Health Records
   - Interoperability
   - Standards
   tags_raw:
@@ -320,7 +320,7 @@ apis:
   - FHIR
   - SMART
   - Authentication
-  - EHR
+  - Electronic Health Records
   - Standards
   tags_raw:
   - FHIR
